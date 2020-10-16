@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-//require('dotenv').config();
-//const mongoURI = process.env.DB_URI + process.env.DB_NAME;
-const mongoURI = 'mongodb://localhost:27017/gifs_db';
+require('dotenv').config();
+const mongoURI = process.env.DB_URL + process.env.DB_NAME;
+//const mongoURI = 'mongodb://localhost:27017/gifs_db';
 const config = {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,

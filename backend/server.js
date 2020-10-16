@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const logger = require('morgan');
 const app = express();
-const PORT = process.env.POST || 3000;
+const PORT = process.env.PORT || 3001;
 
 app.use(logger('dev'));
 app.use(express.urlencoded({ extended: false }));
