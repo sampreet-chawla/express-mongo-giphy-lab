@@ -33,8 +33,9 @@ router.get('/', async (req, res) => {
 // CREATE
 router.post('/', async (req, res) => {
 	try {
-		const data = await Gifs.create(req.body);
-		res.json({ status: 200, created: data });
+		await Gifs.create(req.body);
+		const data = await Gifs.find({});
+		res.json({ status: 200, data: data });
 	} catch (err) {
 		res.json({ status: 500, error: err });
 	} finally {
@@ -45,10 +46,11 @@ router.post('/', async (req, res) => {
 // UPDATE
 router.put('/:gifId', async (req, res) => {
 	try {
-		const data = await Gifs.findByIdAndUpdate(req.params.gifId, req.body, {
+		await Gifs.findByIdAndUpdate(req.params.gifId, req.body, {
 			new: true,
 		});
-		res.json({ status: 200, updated: data });
+		const data = await Gifs.find({});
+		res.json({ status: 200, data: data });
 	} catch (err) {
 		res.json({ status: 500, error: err });
 	} finally {
@@ -59,8 +61,9 @@ router.put('/:gifId', async (req, res) => {
 // DESTROY
 router.delete('/:gifId', async (req, res) => {
 	try {
-		const data = await Gifs.findByIdAndDelete(req.params.gifId);
-		res.json({ status: 200, deleted: data });
+		await Gifs.findByIdAndDelete(req.params.gifId);
+		const data = await Gifs.find({});
+		res.json({ status: 200, data: data });
 	} catch (err) {
 		res.json({ status: 500, error: err });
 	} finally {
